@@ -1,0 +1,111 @@
+@import "../../scss/base";
+@import "../../scss/mixin";
+
+.login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+
+    & .first-side,
+    .second-side {
+        width: 50%;
+    }
+
+    @include respond(bigTablet) {
+        & .first-side {
+            width: 40%;
+        }
+
+        & .second-side {
+            width: 60%;
+        }
+    }
+
+    @include respond(midTablet) {
+        & .second-side {
+            width: 100%;
+            box-shadow: 0;
+        }
+    }
+
+
+
+    & .first-side {
+        display: flex;
+        flex-direction: column;
+        padding: 3rem 6rem;
+
+        @include respond(midTablet) {
+            display: none;
+        }
+
+        & .logo {
+            height: 3.6rem;
+            width: 10.6rem;
+        }
+
+        & .login-img {
+            margin: auto 0;
+        }
+    }
+
+    & .second-side {
+        box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
+        padding: 0 10rem;
+        display: flex;
+
+        @include respond(miniLaptop) {
+            padding: 0 5rem;
+        }
+
+        @include respond(midTablet) {
+            flex-direction: column;
+        }
+
+        @include respond(phone) {
+            padding: 0 2.5rem;
+        }
+
+
+
+        & .logo {
+            height: 3.6rem;
+            width: 10.6rem;
+            display: none;
+
+            @include respond(midTablet) {
+                display: block;
+                margin-top: 3rem;
+            }
+        }
+
+
+        & .container {
+            margin: auto 0;
+            width: 100%;
+
+            @include respond(phone) {
+                margin: 10rem 0 0;
+            }
+
+            & h3 {
+                font-size: 4rem;
+                color: $color-primary;
+
+                @include respond(phone) {
+                    text-align: center;
+                }
+            }
+
+
+            & .text {
+                font-size: 2rem;
+                color: $color-tertiary;
+
+                @include respond(phone) {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+@import "../../scss/base";
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 6rem;
+
+    & .forgot-password {
+        font-size: 1.2rem;
+        font-style: 500;
+        text-transform: uppercase;
+        color: $color-secondary;
+        cursor: pointer;
+    }
+
+    & .btn {
+        padding: 1.5rem 0;
+        font-size: 1.4rem;
+        background-color: $color-secondary;
+        border-radius: 8px;
+        text-transform: uppercase;
+        border: 2px solid $color-secondary;
+        outline: 0;
+        font-style: 700;
+        color: #fff;
+        margin-top: 3rem;
+        transition: all .3s ease-in;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+        &:hover {
+            background-color: rgba($color-secondary, .8);
+            border-color: rgba($color-secondary, .8);
+        }
+    }
+}
+
+.input {
+    border: 2px solid rgba(84, 95, 125, 0.15);
+    border-radius: 5px;
+    padding: 1.75rem 5rem 1.75rem 1.6rem;
+    outline: 0;
+
+    &::placeholder {
+        color: $color-tertiary;
+        font-size: 1.4rem;
+    }
+
+    &:focus {
+        border-color: $color-secondary;
+        outline: 0;
+    }
+
+
+}
