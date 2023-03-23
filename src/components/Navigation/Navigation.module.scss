@@ -1,0 +1,80 @@
+@import "../../scss/base";
+
+.nav-container {
+    width: 24rem;
+    height: calc(100vh - 7rem);
+    box-shadow: 0px 5px 20px 0px #0000000A;
+    overflow-y: auto;
+    padding: 0 0 3rem;
+
+    /* width */
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: $color-tertiary;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba($color-tertiary, .8);
+    }
+
+    & .organization {
+        display: flex;
+        font-size: 1.5rem;
+        padding: 0 2rem;
+        margin: 3.5rem 0;
+
+        & p {
+            margin: 0 1rem;
+        }
+    }
+
+    & .links {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+        text-transform: capitalize;
+        transition: all .2s ease-in;
+
+
+        & img {
+            margin-right: 1rem;
+        }
+
+        &:hover {
+            color: $color-primary;
+            font-weight: 500;
+        }
+    }
+
+    & .min-header {
+        padding: 0 3rem;
+        margin: 3.5rem 0 1rem;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+}
+
+.active-nav {
+    border-left: 3px solid $color-secondary;
+    background-color: rgba($color-secondary, .1);
+    color: $color-primary;
+    font-weight: 500;
+}
+
+.non-active-nav {
+    color: rgba($color-primary, .8);
+    border-left: 3px solid #fff;
+}

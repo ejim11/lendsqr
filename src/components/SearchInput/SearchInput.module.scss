@@ -1,0 +1,33 @@
+@import "../../scss/base";
+
+.form {
+    display: flex;
+    width: 40rem;
+    margin-left: 10rem;
+
+    & .input {
+        padding: 1.2rem 2rem;
+        outline: none;
+        flex: 1 0 0;
+        border-radius: 8px 0 0 8px;
+        border-right: 0;
+        border-left: 1px solid rgba($color-tertiary, .3);
+        border-top: 1px solid rgba($color-tertiary, .3);
+        border-bottom: 1px solid rgba($color-tertiary, .3);
+
+        &::placeholder {
+            color: rgba($color-tertiary, .5);
+            font-size: 1.4rem;
+        }
+    }
+
+    & .btn {
+        padding: 1.2rem 2rem;
+        outline: 0;
+        border: 1px solid $color-secondary;
+        background-color: $color-secondary;
+        border-radius: 0 8px 8px 0;
+        cursor: pointer;
+    }
+
+}
