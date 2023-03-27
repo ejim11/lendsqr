@@ -1,0 +1,56 @@
+@import "../../../scss/base";
+
+.users {
+    padding: 4rem 6rem;
+    flex: 1;
+    background-color: rgba(#E5E5E5, .1);
+
+    & h2 {
+        font-size: 2.4rem;
+        color: $color-primary;
+    }
+
+    & .statistics-board {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 4rem;
+
+
+        & .statistics-item {
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(33, 63, 125, 0.06);
+            border-radius: 4px;
+            flex: 1;
+            padding: 2rem 3rem;
+
+            &:not(:last-child) {
+                margin-right: 2.6rem;
+            }
+
+            & img {
+                width: 4rem;
+                height: 4rem;
+            }
+
+            &-title {
+                color: $color-tertiary;
+                font-size: 1.4rem;
+                font-weight: medium;
+                margin: 1.4rem 0;
+                text-transform: uppercase;
+            }
+
+            &-number {
+                color: $color-tertiary;
+                font-size: 2.4rem;
+                font-weight: 500;
+            }
+        }
+
+
+    }
+}

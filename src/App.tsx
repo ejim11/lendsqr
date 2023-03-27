@@ -4,8 +4,16 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import DashboardMain from "./pages/Dashboard/DashboardMain/DashboardMain";
 import Users from "./pages/Dashboard/Users/Users";
 import Login from "./pages/Login/Login";
+import { useEffect } from "react";
+import { getAllUsers } from "./actions/usersListActions";
+import { useAppDispatch } from "./hooks/reduxHooks";
 
 function App() {
+  const dispatchFn = useAppDispatch();
+  useEffect(() => {
+    dispatchFn(getAllUsers());
+  });
+
   return (
     <div className="App">
       <Routes>
