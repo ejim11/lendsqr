@@ -1,6 +1,6 @@
 import classes from "./Users.module.scss";
-import { usersStatistics } from "../../../components/utils/usersStatistics";
-import { useAppSelector } from "../../../hooks/reduxHooks";
+import { usersStatistics } from "../../components/utils/usersStatistics";
+import { useAppSelector } from "../../hooks/reduxHooks";
 
 const Users = () => {
   const usersList = useAppSelector((state) => state.usersList.list);

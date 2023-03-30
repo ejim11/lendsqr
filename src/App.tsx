@@ -1,8 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import DashboardMain from "./pages/Dashboard/DashboardMain/DashboardMain";
-import Users from "./pages/Dashboard/Users/Users";
+import DashboardMain from "./pages/DashboardMain/DashboardMain";
+import Users from "./pages/Users/Users";
 import Login from "./pages/Login/Login";
 import { useEffect } from "react";
 import { getAllUsers } from "./actions/usersListActions";
