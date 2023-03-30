@@ -39,7 +39,7 @@ const Navigation = () => {
                 key={link.title}
                 to={link.path}
                 className={`${
-                  location.pathname.slice(11) === link.path
+                  location.pathname.slice(1) === link.path
                     ? classes["active-nav"]
                     : classes["non-active-nav"]
                 } ${classes.links}`}

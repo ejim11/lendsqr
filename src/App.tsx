@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import { useEffect } from "react";
 import { getAllUsers } from "./actions/usersListActions";
 import { useAppDispatch } from "./hooks/reduxHooks";
+import Layout from "./components/Layout/Layout";
 
 function App() {
   const dispatchFn = useAppDispatch();
@@ -16,15 +17,15 @@ function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Navigate to={"login"} />} />
-        <Route path="login" element={<Login />} />
-        <Route path="dashboard" element={<Dashboard />}>
-          <Route path="" element={<DashboardMain />} />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Navigate to={"login"} />} />
+          <Route path="login" element={<Login />} />
+          <Route path="dashboard" element={<DashboardMain />} />
           <Route path="customers/users" element={<Users />} />
-        </Route>
-        <Route path="*" element={<div>Still Building</div>} />
-      </Routes>
+          <Route path="*" element={<div>Still Building</div>} />
+        </Routes>
+      </Layout>
     </div>
   );
 }
