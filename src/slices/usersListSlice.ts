@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const storedUserList: any = localStorage.getItem("user-list");
+
 const usersListSlice = createSlice({
   name: "usersList",
   initialState: {
-    list: [],
+    list: JSON.parse(storedUserList) || [],
   },
   reducers: {
     setUsersList(state, action: { payload: [] }) {

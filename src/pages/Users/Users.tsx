@@ -1,10 +1,8 @@
 import classes from "./Users.module.scss";
 import { usersStatistics } from "../../components/utils/usersStatistics";
-import { useAppSelector } from "../../hooks/reduxHooks";
+import UsersListTable from "../../components/UsersListTable/UsersListTable";
 
 const Users = () => {
-  const usersList = useAppSelector((state) => state.usersList.list);
-
   return (
     <section className={classes["users"]}>
       <h2>Users</h2>
@@ -17,6 +15,7 @@ const Users = () => {
           </div>
         ))}
       </div>
+      <UsersListTable />
     </section>
   );
 };

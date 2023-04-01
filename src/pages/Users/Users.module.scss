@@ -1,9 +1,12 @@
-@import "../../../scss/base";
+@import "../../scss/base";
 
 .users {
     padding: 4rem 6rem;
     flex: 1;
     background-color: rgba(#E5E5E5, .1);
+    height: calc(100vh - 7rem);
+    overflow-y: scroll;
+
 
     & h2 {
         font-size: 2.4rem;
