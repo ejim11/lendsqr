@@ -10,8 +10,13 @@ import Layout from "./components/Layout/Layout";
 
 function App() {
   const dispatchFn = useAppDispatch();
+
   useEffect(() => {
-    dispatchFn(getAllUsers());
+    const storedUsersList: any = localStorage.getItem("tableList");
+
+    if (!JSON.parse(storedUsersList)) {
+      dispatchFn(getAllUsers());
+    }
   });
 
   return (

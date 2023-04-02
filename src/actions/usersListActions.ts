@@ -9,6 +9,7 @@ export const getAllUsers = () => {
       const data = await res.json();
 
       dispatch(usersListAction.setUsersList(data));
+      dispatch(usersListAction.setTableList(data));
     } catch (err) {
       console.log(err);
     }

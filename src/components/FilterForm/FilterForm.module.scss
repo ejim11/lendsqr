@@ -1,0 +1,139 @@
+@import "../../scss/base";
+
+.form {
+    position: absolute;
+    top: 7rem;
+    left: 1.5rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+    padding: 3rem 2rem;
+    border-radius: 4px;
+    transition: all .2s ease-in;
+
+
+    & .input-container {
+        display: flex;
+        flex-direction: column;
+
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        & label {
+            color: $color-tertiary;
+            font-size: 1.4rem;
+            font-weight: 500;
+            text-transform: capitalize;
+            margin-bottom: .6rem;
+        }
+
+        & .select-body {
+            width: 100%;
+            border: 1px solid rgba($color-primary, .2);
+            border-radius: .8rem;
+            padding: 1.2rem 2rem;
+        }
+
+        & select {
+            border: none;
+            outline: none;
+            width: 100%;
+            cursor: pointer;
+            color: $color-tertiary;
+            text-transform: capitalize;
+
+            /* width */
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
+
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: $color-tertiary;
+            }
+
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: rgba($color-tertiary, .8);
+            }
+
+            & option {
+                font-size: 1.4rem;
+                color: $color-tertiary;
+                margin-bottom: .5rem;
+                text-transform: capitalize;
+            }
+        }
+
+
+
+        & input {
+            border: 1px solid rgba($color-primary, .2);
+            outline: none;
+            border-radius: .8rem;
+            padding: 1.2rem 2rem;
+            color: $color-tertiary;
+
+            &::placeholder {
+                font-size: 1.4rem;
+                color: $color-tertiary;
+            }
+        }
+    }
+
+    & .btn-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.5rem;
+
+        & button {
+            padding: 1rem 3rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            outline: none;
+            border-radius: .8rem;
+            transition: all .2s ease-in;
+            cursor: pointer;
+        }
+
+        & button:first-of-type {
+            border: 1px solid $color-tertiary;
+            background-color: #fff;
+            color: $color-tertiary;
+
+            &:hover {
+                background-color: $color-tertiary;
+                color: #fff;
+            }
+        }
+
+        & button:last-of-type {
+            border: 1px solid $color-secondary;
+            color: #fff;
+            background-color: $color-secondary;
+
+            &:hover {
+                color: $color-secondary;
+                background-color: #fff;
+            }
+        }
+    }
+}
+
+.display-form {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hide-form {
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 300ms;
+}

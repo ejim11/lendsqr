@@ -1,10 +1,24 @@
 import classes from "./Users.module.scss";
 import { usersStatistics } from "../../components/utils/usersStatistics";
 import UsersListTable from "../../components/UsersListTable/UsersListTable";
+import { useAppDispatch } from "../../hooks/reduxHooks";
+import { usersListAction } from "../../slices/usersListSlice";
 
 const Users = () => {
+  const dispatchFn = useAppDispatch();
+
+  const closeFilterFormHandler = (e: any) => {
+    if (e.target.dataset.filterform === "false") {
+      dispatchFn(usersListAction.setDisplayFilterForm(false));
+    }
+  };
+
   return (
-    <section className={classes["users"]}>
+    <section
+      className={classes["users"]}
+      onClick={closeFilterFormHandler}
+      data-filterform="false"
+    >
       <h2>Users</h2>
       <div className={classes["statistics-board"]}>
         {usersStatistics.map((item, i) => (
