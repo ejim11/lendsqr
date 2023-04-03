@@ -50,6 +50,42 @@ const usersListSlice = createSlice({
     setDisplayFilterForm(state, action: { payload: boolean }) {
       state.displayFilterForm = action.payload;
     },
+    filterTableListDataByOrganization(state, action: { payload: string }) {
+      state.tableList = state.tableList.filter(
+        (user: any) =>
+          user.orgName.toLowerCase() === action.payload.toLowerCase()
+      );
+    },
+    filterTableListDataByUsername(state, action: { payload: string }) {
+      state.tableList = state.tableList.filter(
+        (user: any) =>
+          user.userName.toLowerCase() === action.payload.toLowerCase()
+      );
+    },
+    filterTableListDataByEmail(state, action: { payload: string }) {
+      state.tableList = state.tableList.filter(
+        (user: any) => user.email.toLowerCase() === action.payload.toLowerCase()
+      );
+    },
+    filterTableListDataByPhone(state, action: { payload: string }) {
+      state.tableList = state.tableList.filter(
+        (user: any) => user.phone.toLowerCase() === action.payload.toLowerCase()
+      );
+    },
+    filterTableListDataByDate(state, action: { payload: string }) {
+      state.tableList = state.tableList.filter(
+        (user: any) => user.date.toLowerCase() === action.payload.toLowerCase()
+      );
+    },
+    filterTableListDataByStatus(state, action: { payload: string }) {
+      state.tableList = state.tableList.filter(
+        (user: any) =>
+          user.status.toLowerCase() === action.payload.toLowerCase()
+      );
+    },
+    restoreTableList(state) {
+      state.tableList = JSON.parse(storedTableList);
+    },
   },
 });
 

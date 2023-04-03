@@ -5,16 +5,13 @@ import chevronRight from "../../assets/dashboard/right-chevron.svg";
 const TablePagination = ({
   setCurrentPage,
   currentPage,
+  amountOfPages,
 }: {
   setCurrentPage: Function;
   currentPage: number;
+  amountOfPages: number;
 }) => {
-  const amountOfUsersPerPage = 10;
-
-  const pageNavigators = Array.from(
-    { length: amountOfUsersPerPage },
-    (_, i) => i + 1
-  );
+  const pageNavigators = Array.from({ length: amountOfPages }, (_, i) => i + 1);
 
   const decreaseCurrentPage = () => {
     setCurrentPage((prevState: number) => {
@@ -43,19 +40,19 @@ const TablePagination = ({
       <div className={classes["paginate-page"]}>
         <p>Showing</p>
         <p className={classes["page-number"]}>{currentPage}</p>
-        <p>out of {amountOfUsersPerPage}</p>
+        <p>out of {amountOfPages}</p>
       </div>
       <div className={classes["page-navigation"]}>
         <div onClick={decreaseCurrentPage} className={classes.prev}>
           <img src={chevronLeft} alt="chevron left" />
         </div>
 
-        {currentPage + 2 < amountOfUsersPerPage - 2 ? null : <p>...</p>}
+        {currentPage + 2 < amountOfPages - 2 ? null : <p>...</p>}
         {pageNavigators
           .slice(
             currentPage - 1,
-            currentPage + 2 >= amountOfUsersPerPage - 2
-              ? amountOfUsersPerPage - 2
+            currentPage + 2 >= amountOfPages - 2
+              ? amountOfPages - 2
               : currentPage + 2
           )
           .map((navigator: number, i: number) => (
@@ -73,9 +70,9 @@ const TablePagination = ({
               {navigator}
             </p>
           ))}
-        {currentPage + 2 >= amountOfUsersPerPage - 2 ? null : <p>...</p>}
+        {currentPage + 2 >= amountOfPages - 2 ? null : <p>...</p>}
         {pageNavigators
-          .slice(amountOfUsersPerPage - 2, amountOfUsersPerPage)
+          .slice(amountOfPages - 2, amountOfPages)
           .map((navigator: number, i: number) => (
             <p
               key={i}

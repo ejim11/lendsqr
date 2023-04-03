@@ -49,3 +49,13 @@ export interface User {
   };
   userName: string;
 }
+
+export interface UserData {
+  date: string;
+  email: string;
+  id: string;
+  orgName: string;
+  phoneNumber: string;
+  status: string;
+  userName: string;
+}

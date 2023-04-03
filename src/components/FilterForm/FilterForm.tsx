@@ -2,8 +2,9 @@ import classes from "./FilterForm.module.scss";
 import { useAppSelector, useAppDispatch } from "../../hooks/reduxHooks";
 import { useState } from "react";
 import { usersListAction } from "../../slices/usersListSlice";
+import { useNavigate } from "react-router-dom";
 
-const FilterForm = () => {
+const FilterForm = ({ setCurrentPage }: { setCurrentPage: Function }) => {
   const tableListData = useAppSelector((state) => state.usersList.tableList);
 
   const dispatchFn = useAppDispatch();
@@ -11,6 +12,8 @@ const FilterForm = () => {
   const displayFilterForm = useAppSelector(
     (state) => state.usersList.displayFilterForm
   );
+
+  const navigate = useNavigate();
 
   const [orgValue, setOrgValue] = useState("");
   const [usernameVal, setUsernameVal] = useState("");
@@ -25,6 +28,31 @@ const FilterForm = () => {
 
   const onSubmitHandler = (e: any) => {
     e.preventDefault();
+
+    if (
+      orgValue ||
+      usernameVal ||
+      emailVal ||
+      dateVal ||
+      phoneVal ||
+      statusVal
+    ) {
+      navigate(
+        `/customers/users/?${orgValue ? `org=${orgValue}` : ""}${
+          usernameVal ? `&username=${usernameVal}` : ""
+        }${emailVal ? `&email=${emailVal}` : ""}${
+          dateVal ? `&date=${dateVal}` : ""
+        }${phoneVal ? `&phone=${phoneVal}` : ""}${
+          statusVal ? `&status=${statusVal}` : ""
+        }`
+      );
+      dispatchFn(usersListAction.setDisplayFilterForm(false));
+      setOrgValue("");
+      setStatusVal("");
+      setCurrentPage(1);
+    } else {
+      return;
+    }
   };
 
   return (
