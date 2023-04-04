@@ -1,4 +1,5 @@
 @import "../../scss/base";
+@import "../../scss/mixin";
 
 .container {
     margin-top: 4rem;
@@ -25,11 +26,19 @@
     box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
     padding: 3.5rem 3rem 3rem;
     position: relative;
+
+    @include respond(miniLaptop) {
+        overflow-x: scroll;
+    }
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
+
+    @include respond(miniLaptop) {
+        width: max-content;
+    }
 }
 
 th {

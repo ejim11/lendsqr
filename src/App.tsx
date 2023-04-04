@@ -8,7 +8,7 @@ import { getAllUsers } from "./actions/usersListActions";
 import { useAppDispatch } from "./hooks/reduxHooks";
 import Layout from "./components/Layout/Layout";
 import UserDetails from "./pages/UserDetails/UserDetails";
-import GeneralDetails from "./pages/Users/GeneralDetails/GeneralDetails";
+import GeneralDetails from "./pages/UserDetails/GeneralDetails/GeneralDetails";
 import UnderConstruction from "./pages/UnderConstruction/UnderConstruction";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";

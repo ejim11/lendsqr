@@ -1,4 +1,5 @@
 @import "../../scss/base";
+@import "../../scss/mixin";
 
 .user-detail-container {
     padding: 6rem;
@@ -6,6 +7,10 @@
     background-color: rgba(#E5E5E5, .1);
     height: calc(100vh - 7rem);
     overflow-y: scroll;
+
+    @include respond(bigPhone) {
+        padding: 4rem 2.5rem;
+    }
 
     /* width */
     &::-webkit-scrollbar {
@@ -45,15 +50,30 @@
         margin-top: 3rem;
         align-items: center;
 
+        @include respond(bigPhone) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
         & h2 {
             font-size: 2.4rem;
             color: $color-primary;
             font-weight: 500;
+
+            @include respond(bigPhone) {
+                order: 2;
+                margin-top: 3rem;
+            }
         }
 
         & .btn-container {
             margin-left: auto;
             display: flex;
+
+            @include respond(bigPhone) {
+                order: 1;
+                margin-left: 0;
+            }
 
             & button {
                 font-size: 1.4rem;
@@ -104,6 +124,20 @@
         padding: 3rem;
         align-items: center;
 
+        @include respond(bigPhone) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &-1 {
+            display: flex;
+            align-items: center;
+
+            @include respond(bigPhone) {
+                margin-bottom: 1.5rem;
+            }
+        }
+
         & img {
             width: 10rem;
             height: 10rem;
@@ -111,6 +145,8 @@
 
         & .user-name {
             margin-left: 2rem;
+
+
 
             & p:first-of-type {
                 font-size: 2.2rem;
@@ -135,6 +171,12 @@
             flex-direction: column;
             align-items: center;
 
+            @include respond(bigPhone) {
+                border: none;
+                margin: 0 2rem 0 1rem;
+                padding: 0;
+            }
+
             & p:first-of-type {
                 font-size: 1.4rem;
                 text-transform: capitalize;
@@ -144,6 +186,8 @@
         }
 
         & .user-account {
+
+
 
             & p:first-of-type {
                 font-size: 2.2rem;
@@ -165,12 +209,30 @@
         display: flex;
         justify-content: space-around;
 
+        @include respond(miniLaptop) {
+            overflow-x: scroll;
+            justify-content: unset;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
         & a {
             display: block;
             text-decoration: none;
             padding: 1rem 1.5rem;
             font-size: 1.6rem;
             transition: all .2s ease-in;
+
+            @include respond(miniLaptop) {
+                white-space: nowrap;
+                width: max-content;
+
+                &:not(:last-child) {
+                    margin-right: 1rem;
+                }
+            }
         }
     }
 }

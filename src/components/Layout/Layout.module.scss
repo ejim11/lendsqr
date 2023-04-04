@@ -1,4 +1,5 @@
 @import "../../scss/base";
+@import "../../scss/mixin";
 
 .header {
     width: 100%;
@@ -43,6 +44,10 @@
             display: flex;
             align-items: center;
 
+            @include respond(phone) {
+                display: none;
+            }
+
             &-img {
                 width: 4.5rem;
                 height: 4.5rem;
@@ -62,4 +67,27 @@
 
 main {
     display: flex;
+}
+
+.menu-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+    cursor: pointer;
+    margin-left: 1.5rem;
+    color: $color-primary;
+    display: none;
+
+    @include respond(bigTablet) {
+        display: block;
+    }
+}
+
+.show-menu-icon {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hide-menu-icon {
+    opacity: 0;
+    visibility: hidden;
 }

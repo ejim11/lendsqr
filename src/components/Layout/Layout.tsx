@@ -7,9 +7,13 @@ import profileImg from "../../assets/dashboard/profile-img.jpg";
 import chevronIcon from "../../assets/dashboard/chevron-icon.svg";
 import Navigation from "../Navigation/Navigation";
 import { useLocation } from "react-router-dom";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { useState } from "react";
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
+
+  const [displayNavMenu, setDisplayNavMenu] = useState<boolean>(false);
 
   return (
     <>
@@ -35,10 +39,25 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <img src={chevronIcon} alt="chevronIcon" />
             </div>
           </div>
+          <HiOutlineMenuAlt3
+            className={`${classes["menu-icon"]} ${
+              displayNavMenu
+                ? classes["hide-menu-icon"]
+                : classes["show-menu-icon"]
+            }`}
+            onClick={() => {
+              setDisplayNavMenu(true);
+            }}
+          />
         </header>
       )}
       <main>
-        {location.pathname !== "/login" && <Navigation />}
+        {location.pathname !== "/login" && (
+          <Navigation
+            displayNavMenu={displayNavMenu}
+            setDisplayNavMenu={setDisplayNavMenu}
+          />
+        )}
         <>{children}</>
       </main>
     </>

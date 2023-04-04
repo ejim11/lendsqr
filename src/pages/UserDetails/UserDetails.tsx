@@ -71,26 +71,30 @@ const UserDetails = () => {
       </div>
       <div className={classes["user-detail-head"]}>
         <div className={classes["user-detail-head-inner"]}>
-          <img src={userProfile} alt="user-profile" />
-          <div className={classes["user-name"]}>
-            <p>
-              {user?.profile.firstName} {user?.profile.lastName}
-            </p>
-            <p>{user?.userName}</p>
+          <div className={classes["user-detail-head-inner-1"]}>
+            <img src={userProfile} alt="user-profile" />
+            <div className={classes["user-name"]}>
+              <p>
+                {user?.profile.firstName} {user?.profile.lastName}
+              </p>
+              <p>{user?.userName}</p>
+            </div>
           </div>
-          <div className={classes["user-star"]}>
-            <p>user's tier</p>
-            <ReactStars
-              count={3}
-              onChange={ratingChanged}
-              size={24}
-              //   color1={"transparent"}
-              color2={"#ffd700"}
-            />
-          </div>
-          <div className={classes["user-account"]}>
-            <p>₦{user?.accountBalance}</p>
-            <p>{user?.accountNumber}</p>
+          <div className={classes["user-detail-head-inner-1"]}>
+            <div className={classes["user-star"]}>
+              <p>user's tier</p>
+              <ReactStars
+                count={3}
+                onChange={ratingChanged}
+                size={24}
+                //   color1={"transparent"}
+                color2={"#ffd700"}
+              />
+            </div>
+            <div className={classes["user-account"]}>
+              <p>₦{user?.accountBalance}</p>
+              <p>{user?.accountNumber}</p>
+            </div>
           </div>
         </div>
         <div className={classes["user-navs"]}>

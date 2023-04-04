@@ -1,5 +1,5 @@
 @import "../../scss/base";
-
+@import "../../scss/mixin";
 
 .paginate {
     margin-top: 3rem;
@@ -7,12 +7,24 @@
     align-items: center;
     justify-content: space-between;
 
+    @include respond(phone) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
     &-page {
         display: flex;
         align-items: center;
         font-size: 1.4rem;
         color: $color-tertiary;
+
+        @include respond(phone) {
+            margin-bottom: 1.5rem;
+        }
     }
+
+
 
     & .page-number {
         padding: .7rem 1.4rem;
@@ -27,6 +39,10 @@
     & .page-navigation {
         display: flex;
         align-items: center;
+
+        @include respond(phone) {
+            width: 100%;
+        }
 
         & .prev,
         .next {

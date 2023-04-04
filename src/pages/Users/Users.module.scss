@@ -1,4 +1,5 @@
 @import "../../scss/base";
+@import "../../scss/mixin";
 
 .users {
     padding: 4rem;
@@ -6,6 +7,12 @@
     background-color: rgba(#E5E5E5, .1);
     height: calc(100vh - 7rem);
     overflow-y: scroll;
+
+    @include respond(bigPhone) {
+        padding: 4rem 2.5rem;
+    }
+
+
 
     /* width */
     &::-webkit-scrollbar {
@@ -39,6 +46,12 @@
         justify-content: space-between;
         margin-top: 4rem;
 
+        @include respond(bigPhone) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1.5rem;
+        }
+
 
         & .statistics-item {
             display: flex;
@@ -50,8 +63,13 @@
             flex: 1;
             padding: 2rem 3rem;
 
+
             &:not(:last-child) {
                 margin-right: 2.6rem;
+
+                @include respond(bigPhone) {
+                    margin-right: 0;
+                }
             }
 
             & img {

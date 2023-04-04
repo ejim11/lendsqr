@@ -13,6 +13,13 @@
         }
     }
 
+    @if $breakpoint ==bigPhone {
+        @media (max-width: 40.625em) {
+            //650
+            @content;
+        }
+    }
+
     @if $breakpoint ==midTablet {
         @media (max-width: 46.875em) {
             //750

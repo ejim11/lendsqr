@@ -1,9 +1,14 @@
 @import "../../scss/base";
+@import "../../scss/mixin";
 
 .form {
     display: flex;
     width: 40rem;
     margin-left: 10rem;
+
+    @include respond(bigTablet) {
+        display: none;
+    }
 
     & .input {
         padding: 1.2rem 2rem;
