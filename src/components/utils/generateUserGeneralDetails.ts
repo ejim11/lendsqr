@@ -64,7 +64,10 @@ const generateUserGeneralDetails = (user: User) => {
         },
         {
           title: "monthly income",
-          detail: `₦${user.education.monthlyIncome}`,
+          detail: `₦${
+            Number(user.education.monthlyIncome[0]) +
+            Number(user.education.monthlyIncome[1])
+          }`,
         },
         {
           title: "loan repayment",

@@ -1,5 +1,5 @@
 @import "../../scss/base";
-
+@import "../../scss/mixin";
 
 td {
     padding: 2rem 0rem;
@@ -10,6 +10,10 @@ td {
 
 .dots {
     padding-left: 4rem;
+
+    @include respond(phone) {
+        padding-left: 2rem;
+    }
 
     & img {
         cursor: pointer;
@@ -36,6 +40,10 @@ td {
     flex-direction: column;
     transition: all .2s ease-in;
     z-index: 5;
+
+    @include respond(phone) {
+        right: 1.5rem;
+    }
 }
 
 .show-side-modal {
