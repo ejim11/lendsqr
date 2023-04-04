@@ -9,6 +9,7 @@ import { useAppDispatch } from "./hooks/reduxHooks";
 import Layout from "./components/Layout/Layout";
 import UserDetails from "./pages/UserDetails/UserDetails";
 import GeneralDetails from "./pages/Users/GeneralDetails/GeneralDetails";
+import UnderConstruction from "./pages/UnderConstruction/UnderConstruction";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
@@ -33,9 +34,9 @@ function App() {
         <Route path="customers/users/:userId" element={<UserDetails />}>
           <Route path="" element={<Navigate to="general-details" />} />
           <Route path="general-details" element={<GeneralDetails />} />
-          <Route path="*" element={<div>Still Building</div>} />
+          <Route path="*" element={<UnderConstruction />} />
         </Route>
-        <Route path="*" element={<div>Still Building</div>} />
+        <Route path="*" element={<UnderConstruction />} />
       </Routes>
       <ToastContainer limit={1} autoClose={2000} />
     </Layout>
