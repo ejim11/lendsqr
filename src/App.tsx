@@ -7,6 +7,10 @@ import { useEffect } from "react";
 import { getAllUsers } from "./actions/usersListActions";
 import { useAppDispatch } from "./hooks/reduxHooks";
 import Layout from "./components/Layout/Layout";
+import UserDetails from "./pages/UserDetails/UserDetails";
+import GeneralDetails from "./pages/Users/GeneralDetails/GeneralDetails";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const dispatchFn = useAppDispatch();
@@ -20,17 +24,21 @@ function App() {
   });
 
   return (
-    <div className="App">
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Navigate to={"login"} />} />
-          <Route path="login" element={<Login />} />
-          <Route path="dashboard" element={<DashboardMain />} />
-          <Route path="customers/users" element={<Users />} />
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Navigate to={"login"} />} />
+        <Route path="login" element={<Login />} />
+        <Route path="dashboard" element={<DashboardMain />} />
+        <Route path="customers/users" element={<Users />} />
+        <Route path="customers/users/:userId" element={<UserDetails />}>
+          <Route path="" element={<Navigate to="general-details" />} />
+          <Route path="general-details" element={<GeneralDetails />} />
           <Route path="*" element={<div>Still Building</div>} />
-        </Routes>
-      </Layout>
-    </div>
+        </Route>
+        <Route path="*" element={<div>Still Building</div>} />
+      </Routes>
+      <ToastContainer limit={1} autoClose={2000} />
+    </Layout>
   );
 }
 

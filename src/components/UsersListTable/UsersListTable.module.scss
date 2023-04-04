@@ -1,9 +1,25 @@
 @import "../../scss/base";
 
+.container {
+    margin-top: 4rem;
+
+    & .back-to-all-users {
+        display: flex;
+        text-decoration: none;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        text-transform: capitalize;
+        color: $color-tertiary;
+
+        & img {
+            margin-right: 1rem;
+        }
+    }
+}
+
 .table-container {
     width: 100%;
     background-color: #fff;
-    margin-top: 4rem;
     border-radius: .4rem;
     border: 1px solid rgba(33, 63, 125, 0.06);
     box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);

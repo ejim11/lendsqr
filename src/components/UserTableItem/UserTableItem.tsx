@@ -1,11 +1,9 @@
 import classes from "./UserTableItem.module.scss";
 import threeDots from "../../assets/dashboard/threedots.svg";
 import { useState } from "react";
-import { useAppSelector } from "../../hooks/reduxHooks";
 import eyeIcon from "../../assets/dashboard/eye-icon.svg";
-import blacklistIcon from "../../assets/dashboard/blacklist-icon.svg";
-import activateIcon from "../../assets/dashboard/activate-icon.svg";
 import UserStatusBtns from "../UserStatusBtns/UserStatusBtns";
+import { Link } from "react-router-dom";
 
 interface UserData {
   date: string;
@@ -64,10 +62,13 @@ const UserTableItem = ({ user }: { user: UserData }) => {
         onMouseEnter={displaySideModalHandler}
         onMouseLeave={hideSideModalHandler}
       >
-        <p className={`${classes["flex-paragraph"]}`}>
+        <Link
+          to={`/customers/users/${user.userName}`}
+          className={`${classes["flex-paragraph"]}`}
+        >
           <img src={eyeIcon} alt="eye-icon" />
           View Details
-        </p>
+        </Link>
         <UserStatusBtns status={user.status} id={user.id} />
       </td>
     </tr>

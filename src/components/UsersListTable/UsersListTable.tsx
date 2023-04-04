@@ -7,9 +7,10 @@ import FilterForm from "../FilterForm/FilterForm";
 import { usersListAction } from "../../slices/usersListSlice";
 import TablePagination from "../TablePagination/TablePagination";
 import { UserData } from "../utils/types";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { TiCancel } from "react-icons/ti";
+import backArrow from "../../assets/dashboard/back arrow.svg";
 
 const tableHeaders = [
   "organization",
@@ -24,9 +25,14 @@ const tableHeaders = [
 const storedCurrentPage: any = localStorage.getItem("currentPage");
 
 const UsersListTable = () => {
-  const usersTableList = useAppSelector((state) => state.usersList.tableList);
+  let usersTableList = useAppSelector((state) => state.usersList.tableList);
 
   const dispatchFn = useAppDispatch();
+
+  // useEffect(() => {
+
+  //   console.log(JSON.parse(storedTableList), "tag");
+  // });
 
   const location = useLocation();
 
@@ -35,6 +41,8 @@ const UsersListTable = () => {
   );
 
   useEffect(() => {
+    const storedTableList: any = localStorage.getItem("tableList");
+
     const queryParams = new URLSearchParams(location.search);
 
     const org = queryParams.get("org");
@@ -63,11 +71,13 @@ const UsersListTable = () => {
       dispatchFn(usersListAction.filterTableListDataByStatus(status));
     }
     if (!org && !username && !email && !phone && !date && !status) {
-      dispatchFn(usersListAction.restoreTableList());
+      dispatchFn(usersListAction.upDateTableList(JSON.parse(storedTableList)));
     }
   }, [location, dispatchFn]);
 
-  const amountOfPages = Math.ceil(usersTableList.length / 10);
+  const amountOfPages = usersTableList
+    ? Math.ceil(usersTableList.length / 10)
+    : 1;
 
   const amountOfUsersPerPage = 10;
 
@@ -81,7 +91,13 @@ const UsersListTable = () => {
   };
 
   return (
-    <div>
+    <div className={classes["container"]}>
+      {location.pathname !== "/customers/users" && (
+        <Link to={"/customers/users"} className={classes["back-to-all-users"]}>
+          <img src={backArrow} alt="back-arrow" />
+          back to all users
+        </Link>
+      )}
       <div className={classes["table-container"]}>
         <table className={classes.table}>
           <thead>
@@ -101,14 +117,15 @@ const UsersListTable = () => {
             </tr>
           </thead>
           <tbody>
-            {usersTableList
-              .slice(startIndex, endIndex)
-              .map((user: UserData, i: number) => (
-                <UserTableItem user={user} key={i} />
-              ))}
+            {usersTableList &&
+              usersTableList
+                .slice(startIndex, endIndex)
+                .map((user: UserData, i: number) => (
+                  <UserTableItem user={user} key={i} />
+                ))}
           </tbody>
         </table>
-        {usersTableList.length === 0 && (
+        {usersTableList && usersTableList.length === 0 && (
           <p className={classes["no-user"]}>
             <TiCancel className={classes["cancel-icon"]} /> No users found
           </p>

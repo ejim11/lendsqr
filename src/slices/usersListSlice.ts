@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { User } from "../components/utils/types";
 import formatDate from "../components/utils/formatDate";
 
-const storedUserList: any = localStorage.getItem("user-list");
+const storedUserList: any = localStorage.getItem("users-list");
 
 const storedTableList: any = localStorage.getItem("tableList");
 
@@ -14,6 +14,10 @@ const usersListSlice = createSlice({
     tableList: JSON.parse(storedTableList) || [],
   },
   reducers: {
+    upDateTableList(state, action) {
+      state.tableList = action.payload;
+      localStorage.setItem("tableList", JSON.stringify(state.tableList));
+    },
     setUsersList(state, action: { payload: User[] }) {
       state.list = action.payload;
       localStorage.setItem("users-list", JSON.stringify(action.payload));
@@ -82,9 +86,6 @@ const usersListSlice = createSlice({
         (user: any) =>
           user.status.toLowerCase() === action.payload.toLowerCase()
       );
-    },
-    restoreTableList(state) {
-      state.tableList = JSON.parse(storedTableList);
     },
   },
 });

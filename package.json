@@ -44,9 +44,12 @@
     ]
   },
   "devDependencies": {
+    "@types/react-stars": "^2.2.1",
     "node-sass": "^7.0.3",
     "react-hook-form": "^7.43.7",
     "react-icons": "^4.8.0",
-    "react-loading": "^2.0.3"
+    "react-loading": "^2.0.3",
+    "react-stars": "^2.2.5",
+    "react-toastify": "^9.1.2"
   }
 }

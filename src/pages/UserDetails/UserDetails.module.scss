@@ -1,0 +1,186 @@
+@import "../../scss/base";
+
+.user-detail-container {
+    padding: 6rem;
+    flex: 1;
+    background-color: rgba(#E5E5E5, .1);
+    height: calc(100vh - 7rem);
+    overflow-y: scroll;
+
+    /* width */
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: $color-tertiary;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba($color-tertiary, .8);
+    }
+
+    & .back-to-all-users {
+        display: flex;
+        text-decoration: none;
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+        text-transform: capitalize;
+        color: $color-tertiary;
+
+        & img {
+            margin-right: 1rem;
+        }
+    }
+
+    & .first-container {
+        display: flex;
+        margin-top: 3rem;
+        align-items: center;
+
+        & h2 {
+            font-size: 2.4rem;
+            color: $color-primary;
+            font-weight: 500;
+        }
+
+        & .btn-container {
+            margin-left: auto;
+            display: flex;
+
+            & button {
+                font-size: 1.4rem;
+                font-weight: 600;
+                border-radius: .8rem;
+                outline: none;
+                text-transform: uppercase;
+                background-color: transparent;
+                transition: all .2s ease-in;
+                cursor: pointer;
+            }
+
+            & button:first-of-type {
+                color: #E4033B;
+                border: 1px solid #E4033B;
+                padding: 1.2rem 1.6rem;
+                margin-right: 2rem;
+
+                &:hover {
+                    color: #fff;
+                    background-color: #E4033B;
+                }
+            }
+
+            & button:last-of-type {
+                color: $color-secondary;
+                border: 1px solid $color-secondary;
+                padding: 1.2rem 2.2rem;
+
+                &:hover {
+                    color: #fff;
+                    background-color: $color-secondary;
+                }
+            }
+        }
+    }
+}
+
+.user-detail-head {
+    background-color: #fff;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    border-radius: 4px;
+    border: 1px solid rgba(33, 63, 125, 0.06);
+    margin-top: 5rem;
+
+    &-inner {
+        display: flex;
+        padding: 3rem;
+        align-items: center;
+
+        & img {
+            width: 10rem;
+            height: 10rem;
+        }
+
+        & .user-name {
+            margin-left: 2rem;
+
+            & p:first-of-type {
+                font-size: 2.2rem;
+                color: $color-primary;
+                font-weight: 500;
+            }
+
+            & p:last-of-type {
+                font-weight: 400;
+                font-size: 1.4rem;
+                text-transform: uppercase;
+                margin-top: .8rem;
+            }
+        }
+
+        & .user-star {
+            padding: 2rem 3rem;
+            margin: 0 3rem;
+            border-right: 1px solid rgba($color-tertiary, .2);
+            border-left: 1px solid rgba($color-tertiary, .2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & p:first-of-type {
+                font-size: 1.4rem;
+                text-transform: capitalize;
+                color: $color-tertiary;
+                font-weight: 500;
+            }
+        }
+
+        & .user-account {
+
+            & p:first-of-type {
+                font-size: 2.2rem;
+                font-weight: 500;
+                color: $color-primary;
+                margin-bottom: .8rem;
+            }
+
+            & p:last-of-type {
+                font-size: 1.2rem;
+                color: $color-primary;
+            }
+        }
+
+
+    }
+
+    & .user-navs {
+        display: flex;
+        justify-content: space-around;
+
+        & a {
+            display: block;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-size: 1.6rem;
+            transition: all .2s ease-in;
+        }
+    }
+}
+
+.active-user-nav {
+    color: $color-secondary;
+    border-bottom: 2px solid $color-secondary;
+}
+
+.inactive-user-nav {
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
+}

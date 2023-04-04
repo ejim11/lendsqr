@@ -37,3 +37,8 @@ input {
 img {
   max-width: 100%;
 }
+
+.Toastify__toast--success,
+.Toastify__toast--error {
+  font-size: 1.35rem;
+}

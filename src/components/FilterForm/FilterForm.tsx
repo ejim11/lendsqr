@@ -22,9 +22,8 @@ const FilterForm = ({ setCurrentPage }: { setCurrentPage: Function }) => {
   const [phoneVal, setPhoneVal] = useState("");
   const [statusVal, setStatusVal] = useState("");
 
-  const organizationsList: string[] = tableListData.map(
-    (user: any) => user.orgName
-  );
+  const organizationsList: string[] =
+    tableListData && tableListData.map((user: any) => user.orgName);
 
   const onSubmitHandler = (e: any) => {
     e.preventDefault();
@@ -79,11 +78,12 @@ const FilterForm = ({ setCurrentPage }: { setCurrentPage: Function }) => {
             }}
           >
             <option value="select">Select</option>
-            {organizationsList.map((organization, i) => (
-              <option value={organization} key={i}>
-                {organization}
-              </option>
-            ))}
+            {organizationsList &&
+              organizationsList.map((organization, i) => (
+                <option value={organization} key={i}>
+                  {organization}
+                </option>
+              ))}
           </select>
         </div>
       </div>
