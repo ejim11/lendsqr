@@ -1,0 +1,14 @@
+@import "../../scss/base";
+@import "../../scss/mixin";
+
+.container {
+    padding: 4rem;
+    flex: 1;
+    background-color: rgba(#E5E5E5, .1);
+    height: calc(100vh - 7rem);
+    overflow-y: scroll;
+
+    @include respond(bigPhone) {
+        padding: 4rem 2.5rem;
+    }
+}

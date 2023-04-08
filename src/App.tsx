@@ -29,7 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to={"login"} />} />
         <Route path="login" element={<Login />} />
-        <Route path="dashboard" element={<UnderConstruction />} />
+        <Route path="dashboard" element={<DashboardMain />} />
         <Route path="customers/users" element={<Users />} />
         <Route path="customers/users/:userId" element={<UserDetails />}>
           <Route path="" element={<Navigate to="general-details" />} />
