@@ -42,7 +42,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className={classes.form}>
+    <form onSubmit={handleSubmit(onSubmit)} data-testid = "form" noValidate className={classes.form}>
       <InputComponent
         placeholder={"Email"}
         type={"email"}

@@ -26,7 +26,7 @@ const Navigation = ({
         setDisplayNavMenu(false);
       }}
     >
-      <div className={classes["nav-container-inner"]}>
+      <nav className={classes["nav-container-inner"]}>
         <div className={classes.organization}>
           <img src={briefcase} alt="brief-case-img" />
           <p>Switch Organization</p>
@@ -44,29 +44,30 @@ const Navigation = ({
           <p>Dashboard</p>
         </Link>
         {links.map((linkObj: LinkItem, i) => (
-          <div key={i}>
+          <ul key={i}>
             <p className={classes["min-header"]} key={i}>
               {linkObj.header}
             </p>
             {linkObj.links.map(
               (link: { path: string; image: string; title: string }) => (
-                <Link
-                  key={link.title}
-                  to={link.path}
-                  className={`${
-                    location.pathname.slice(1) === link.path
-                      ? classes["active-nav"]
-                      : classes["non-active-nav"]
-                  } ${classes.links}`}
-                >
-                  <img src={link.image} alt={link.title} />
-                  <p>{link.title}</p>
-                </Link>
+                <li key={link.title}>
+                  <Link
+                    to={link.path}
+                    className={`${
+                      location.pathname.slice(1) === link.path
+                        ? classes["active-nav"]
+                        : classes["non-active-nav"]
+                    } ${classes.links}`}
+                  >
+                    <img src={link.image} alt={link.title} />
+                    <p>{link.title}</p>
+                  </Link>
+                </li>
               )
             )}
-          </div>
+          </ul>
         ))}
-      </div>
+      </nav>
       <RxCross2
         className={classes["cross-icon"]}
         onClick={() => {
