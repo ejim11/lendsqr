@@ -59,6 +59,7 @@ const UserTableItem = ({ user }: { user: UserData }) => {
             ? classes["show-side-modal"]
             : classes["hide-side-modal"]
         }`}
+        onClick={hideSideModalHandler}
         onMouseEnter={displaySideModalHandler}
         onMouseLeave={hideSideModalHandler}
       >
