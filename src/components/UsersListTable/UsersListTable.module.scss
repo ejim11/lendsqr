@@ -97,3 +97,69 @@ th {
     height: 2rem;
     color: $color-secondary;
 }
+
+// paginate styles
+.paginate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+    font-size: 1.7rem;
+
+    @include respond(phone) {
+        flex-direction: column;
+        margin-top: 3rem;
+    }
+
+    &-showing {
+        display: flex;
+        align-items: center;
+        color: rgba(84, 95, 125, 1);
+
+        @include respond(phone) {
+            margin-bottom: 1rem;
+        }
+
+        &-number {
+            margin: 0 1rem;
+            padding: .5rem 1rem;
+            background-color: rgba(33, 63, 125, 0.1);
+            color: rgba(33, 63, 125, 1);
+            font-weight: 600;
+        }
+    }
+
+    &-container {
+        display: flex;
+        align-items: center;
+
+        &-nav-link {
+            display: block;
+            background-color: rgba(33, 63, 125, 0.1);
+            color: rgba(33, 63, 125, 1);
+            padding: .5rem .8rem;
+            cursor: pointer;
+        }
+
+        &-previous {
+            margin-right: 1rem;
+        }
+
+        &-next {
+            margin-left: 1rem;
+        }
+
+        &-page-number-link {
+            display: block;
+            padding: .5rem 1rem;
+            color: rgba(84, 95, 125, .8);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        &-active-number-link {
+            color: rgba(33, 63, 125, 1);
+            cursor: pointer;
+        }
+    }
+}

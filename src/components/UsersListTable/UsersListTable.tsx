@@ -5,12 +5,12 @@ import { useState } from "react";
 import UserTableItem from "../UserTableItem/UserTableItem";
 import FilterForm from "../FilterForm/FilterForm";
 import { usersListAction } from "../../slices/usersListSlice";
-import TablePagination from "../TablePagination/TablePagination";
 import { UserData } from "../utils/types";
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { TiCancel } from "react-icons/ti";
 import backArrow from "../../assets/dashboard/back arrow.svg";
+import ReactPaginate from "react-paginate";
 
 const tableHeaders = [
   "organization",
@@ -22,23 +22,29 @@ const tableHeaders = [
   "",
 ];
 
-const storedCurrentPage: any = localStorage.getItem("currentPage");
+// const storedCurrentPage: any = localStorage.getItem("currentPage");
 
 const UsersListTable = () => {
   let usersTableList = useAppSelector((state) => state.usersList.tableList);
 
   const dispatchFn = useAppDispatch();
 
-  // useEffect(() => {
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 10;
+  const endOffset = itemOffset + itemsPerPage;
+  const currentItems = usersTableList.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(usersTableList.length / itemsPerPage);
 
-  //   console.log(JSON.parse(storedTableList), "tag");
-  // });
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % usersTableList.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
 
   const location = useLocation();
-
-  const [currentPage, setCurrentPage] = useState<number>(
-    JSON.parse(storedCurrentPage) || 1
-  );
 
   useEffect(() => {
     const storedTableList: any = localStorage.getItem("tableList");
@@ -75,16 +81,6 @@ const UsersListTable = () => {
     }
   }, [location, dispatchFn]);
 
-  const amountOfPages = usersTableList
-    ? Math.ceil(usersTableList.length / 10)
-    : 1;
-
-  const amountOfUsersPerPage = 10;
-
-  let startIndex = (currentPage - 1) * amountOfUsersPerPage;
-
-  let endIndex = currentPage * amountOfUsersPerPage;
-
   const displayFilterFormHandler = (e: any) => {
     console.log(e.target.dataset);
     dispatchFn(usersListAction.setDisplayFilterForm(true));
@@ -117,12 +113,10 @@ const UsersListTable = () => {
             </tr>
           </thead>
           <tbody>
-            {usersTableList &&
-              usersTableList
-                .slice(startIndex, endIndex)
-                .map((user: UserData, i: number) => (
-                  <UserTableItem user={user} key={i} />
-                ))}
+            {currentItems &&
+              currentItems.map((user: UserData, i: number) => (
+                <UserTableItem user={user} key={i} />
+              ))}
           </tbody>
         </table>
         {usersTableList && usersTableList.length === 0 && (
@@ -130,13 +124,31 @@ const UsersListTable = () => {
             <TiCancel className={classes["cancel-icon"]} /> No users found
           </p>
         )}
-        <FilterForm setCurrentPage={setCurrentPage} />
+        <FilterForm />
       </div>
-      <TablePagination
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-        amountOfPages={amountOfPages}
-      />
+      <div className={classes["paginate"]}>
+        <div className={classes["paginate-showing"]}>
+          <p>showing</p>
+          <p className={classes["paginate-showing-number"]}>{endOffset}</p>
+          <p>out of {usersTableList.length}</p>
+        </div>
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="<"
+          renderOnZeroPageCount={null}
+          containerClassName={classes["paginate-container"]}
+          previousClassName={classes["paginate-container-previous"]}
+          nextClassName={classes["paginate-container-next"]}
+          previousLinkClassName={classes["paginate-container-nav-link"]}
+          nextLinkClassName={classes["paginate-container-nav-link"]}
+          pageLinkClassName={classes["paginate-container-page-number-link"]}
+          activeLinkClassName={classes["paginate-container-active-number-link"]}
+        />
+      </div>
     </div>
   );
 };

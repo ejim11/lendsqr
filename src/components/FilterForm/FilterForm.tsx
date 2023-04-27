@@ -4,7 +4,7 @@ import { useState } from "react";
 import { usersListAction } from "../../slices/usersListSlice";
 import { useNavigate } from "react-router-dom";
 
-const FilterForm = ({ setCurrentPage }: { setCurrentPage: Function }) => {
+const FilterForm = () => {
   const tableListData = useAppSelector((state) => state.usersList.tableList);
 
   const dispatchFn = useAppDispatch();
@@ -48,7 +48,6 @@ const FilterForm = ({ setCurrentPage }: { setCurrentPage: Function }) => {
       dispatchFn(usersListAction.setDisplayFilterForm(false));
       setOrgValue("");
       setStatusVal("");
-      setCurrentPage(1);
     } else {
       return;
     }
